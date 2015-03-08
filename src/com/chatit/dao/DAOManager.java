@@ -11,6 +11,8 @@ public class DAOManager {
 	  protected UserDAO userDao = null;
 	  
 	  protected EmailDAO emailDao = null;
+	  
+	  protected ReportDAO reportDao = null;
 
 	  public DAOManager(Connection connection){
 	    this.connection = connection;
@@ -35,6 +37,13 @@ public class DAOManager {
 			  this.emailDao = new EmailDAO(this.connection);
 		  }
 		  return this.emailDao;
+	  }
+	  
+	  public ReportDAO getReportDao(){
+		  if(this.reportDao == null){
+			  this.reportDao = new ReportDAO(this.connection);
+		  }
+		  return this.reportDao;
 	  }
 	  
 }

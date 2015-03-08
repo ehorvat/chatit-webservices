@@ -33,10 +33,12 @@ public class WebController {
 
 	@RequestMapping("/index")
 	public String redirectToIndex(){
-		
-		
-		
 		return "index";
+	}
+	
+	@RequestMapping("/test")
+	public String goToTest(){
+		return "test";
 	}
 	
 	
@@ -50,19 +52,13 @@ public class WebController {
 		System.out.println("Token  :  " + token);
 
 		ModelAndView model = new ModelAndView();
-		
-		
-		
+			
 		try {
 			
-			Queries.dbc();
-			
-			EmailUtility.ActivateAccount(token);
-			
-		
+			Queries.dbc();		
+			EmailUtility.ActivateAccount(token);	
 			model.setViewName("/index");
-
-			
+		
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
