@@ -129,4 +129,24 @@ public class Queries {
 	
 	public static final String DELETE_FROM_PENDING = "delete from \"Add_Email_Request\" where pending_email=? and uid=?";
 	
+	
+	////////////////////////////////////
+	//
+	// Report Queries
+	//
+	////////////////////////////////////
+	
+	public static final String FIND_IN_USER = "select uid, count(*) from \"User\" where base_email=?";
+	
+	public static final String FIND_IN_EMAILS = "select uid from \"Emails\" where registered_email=?";
+	
+	public static final String REPORT_LOOK_UP = "select * from \"Report\" where message=? AND channel=? AND reportee=?";
+	
+	public static final String CHECK_IF_CAN_REPORT = "select * from \"User\" where reporter=? AND rid=?";
+	
+	public static final String INCREMENT_DOWNVOTE = "UPDATE \"Report\" set downvotes=downvotes+1 where rid=?";
+	
+	public static final String NEW_REPORT = "INSERT INTO \"Report\" (message, reportee, channel) VALUES(?, ?, ?) RETURNING rid";
+	
+	public static final String REPORTER_REPORTEE_PAIR = "Insert Into \"Reporter_Reportee_Pair\" (rid, reporter, tstamp, \"reportType\") VALUES(?,?,?,?)";
 }
